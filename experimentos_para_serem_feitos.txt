@@ -1,0 +1,7 @@
+1 - Experimento do disco: Gradiente de velocidade no background
+1.1 - Experimento com background com descontinuidades
+2 - Experimento com 2 ou 3 inclusoes
+3 - Testes com mais tiros
+4 - Testes com inclusoes proximas do topo
+
+
