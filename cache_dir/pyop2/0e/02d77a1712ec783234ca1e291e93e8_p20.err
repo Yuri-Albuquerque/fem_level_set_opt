@@ -1,0 +1,47 @@
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c: In function ‘form0_cell_integral_otherwise’:
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:60:19: warning: unused variable ‘j’ [-Wunused-variable]
+   60 |     int32_t const j = 0;
+      |                   ^
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c: In function ‘wrap_form0_cell_integral_otherwise’:
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:83:25: warning: unused variable ‘i33’ [-Wunused-variable]
+   83 |           int32_t const i33 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:80:23: warning: unused variable ‘i32’ [-Wunused-variable]
+   80 |         int32_t const i32 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:77:21: warning: unused variable ‘i31’ [-Wunused-variable]
+   77 |       int32_t const i31 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:96:25: warning: unused variable ‘i30’ [-Wunused-variable]
+   96 |           int32_t const i30 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:93:23: warning: unused variable ‘i29’ [-Wunused-variable]
+   93 |         int32_t const i29 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:90:21: warning: unused variable ‘i28’ [-Wunused-variable]
+   90 |       int32_t const i28 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:103:21: warning: unused variable ‘i25’ [-Wunused-variable]
+  103 |       int32_t const i25 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:110:21: warning: unused variable ‘i22’ [-Wunused-variable]
+  110 |       int32_t const i22 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:123:25: warning: unused variable ‘i21’ [-Wunused-variable]
+  123 |           int32_t const i21 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:120:23: warning: unused variable ‘i20’ [-Wunused-variable]
+  120 |         int32_t const i20 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:117:21: warning: unused variable ‘i19’ [-Wunused-variable]
+  117 |       int32_t const i19 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:137:25: warning: unused variable ‘i16’ [-Wunused-variable]
+  137 |           int32_t const i16 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:134:23: warning: unused variable ‘i18’ [-Wunused-variable]
+  134 |         int32_t const i18 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/0e/02d77a1712ec783234ca1e291e93e8_p20.c:131:21: warning: unused variable ‘i17’ [-Wunused-variable]
+  131 |       int32_t const i17 = 0;
+      |                     ^~~

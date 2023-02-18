@@ -1,0 +1,29 @@
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c: In function ‘expression_kernel’:
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:19:19: warning: unused variable ‘p0’ [-Wunused-variable]
+   19 |     int32_t const p0 = 0;
+      |                   ^~
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c: In function ‘wrap_expression_kernel’:
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:39:25: warning: unused variable ‘i11’ [-Wunused-variable]
+   39 |           int32_t const i11 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:36:23: warning: unused variable ‘i10’ [-Wunused-variable]
+   36 |         int32_t const i10 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:33:21: warning: unused variable ‘i9’ [-Wunused-variable]
+   33 |       int32_t const i9 = 0;
+      |                     ^~
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:50:23: warning: unused variable ‘i14’ [-Wunused-variable]
+   50 |         int32_t const i14 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:46:21: warning: unused variable ‘i12’ [-Wunused-variable]
+   46 |       int32_t const i12 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:63:25: warning: unused variable ‘i6’ [-Wunused-variable]
+   63 |           int32_t const i6 = 0;
+      |                         ^~
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:60:23: warning: unused variable ‘i8’ [-Wunused-variable]
+   60 |         int32_t const i8 = 0;
+      |                       ^~
+/home/data/cache_dir/pyop2/a8/a39e147c15bae9e11d44389cd02a9a_p59.c:57:21: warning: unused variable ‘i7’ [-Wunused-variable]
+   57 |       int32_t const i7 = 0;
+      |                     ^~

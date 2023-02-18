@@ -1,0 +1,7 @@
+/home/data/cache_dir/pyop2/98/23023ea7f13a233d2329c11e50c942_p58.c: In function ‘wrap_to_reference_coords’:
+/home/data/cache_dir/pyop2/98/23023ea7f13a233d2329c11e50c942_p58.c:85:21: warning: unused variable ‘i3’ [-Wunused-variable]
+   85 |       int32_t const i3 = 0;
+      |                     ^~
+/home/data/cache_dir/pyop2/98/23023ea7f13a233d2329c11e50c942_p58.c:82:19: warning: unused variable ‘n’ [-Wunused-variable]
+   82 |     int32_t const n = start;
+      |                   ^

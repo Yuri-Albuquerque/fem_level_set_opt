@@ -1,0 +1,34 @@
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c: In function ‘wrap_form0_exterior_facet_integral_otherwise’:
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:56:25: warning: unused variable ‘i31’ [-Wunused-variable]
+   56 |           int32_t const i31 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:53:23: warning: unused variable ‘i30’ [-Wunused-variable]
+   53 |         int32_t const i30 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:65:25: warning: unused variable ‘i29’ [-Wunused-variable]
+   65 |           int32_t const i29 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:62:23: warning: unused variable ‘i28’ [-Wunused-variable]
+   62 |         int32_t const i28 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:74:25: warning: unused variable ‘i27’ [-Wunused-variable]
+   74 |           int32_t const i27 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:71:23: warning: unused variable ‘i25’ [-Wunused-variable]
+   71 |         int32_t const i25 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:81:21: warning: unused variable ‘i22’ [-Wunused-variable]
+   81 |       int32_t const i22 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:92:23: warning: unused variable ‘i21’ [-Wunused-variable]
+   92 |         int32_t const i21 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:88:21: warning: unused variable ‘i19’ [-Wunused-variable]
+   88 |       int32_t const i19 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:102:23: warning: unused variable ‘i18’ [-Wunused-variable]
+  102 |         int32_t const i18 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/dd/c2b61e60dc9b4381e10ce5ce473ce1_p58.c:99:21: warning: unused variable ‘i17’ [-Wunused-variable]
+   99 |       int32_t const i17 = 0;
+      |                     ^~~

@@ -1,0 +1,29 @@
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c: In function ‘form0_interior_facet_integral_otherwise’:
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:91:19: warning: unused variable ‘j’ [-Wunused-variable]
+   91 |     int32_t const j = 0;
+      |                   ^
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c: In function ‘wrap_form0_interior_facet_integral_otherwise’:
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:112:23: warning: unused variable ‘i28’ [-Wunused-variable]
+  112 |         int32_t const i28 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:108:21: warning: unused variable ‘i26’ [-Wunused-variable]
+  108 |       int32_t const i26 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:118:21: warning: unused variable ‘i23’ [-Wunused-variable]
+  118 |       int32_t const i23 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:125:21: warning: unused variable ‘i20’ [-Wunused-variable]
+  125 |       int32_t const i20 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:136:23: warning: unused variable ‘i19’ [-Wunused-variable]
+  136 |         int32_t const i19 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:132:21: warning: unused variable ‘i17’ [-Wunused-variable]
+  132 |       int32_t const i17 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:146:23: warning: unused variable ‘i16’ [-Wunused-variable]
+  146 |         int32_t const i16 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/2c/1193bee923c24abf08332958583cc1_p24.c:143:21: warning: unused variable ‘i15’ [-Wunused-variable]
+  143 |       int32_t const i15 = 0;
+      |                     ^~~

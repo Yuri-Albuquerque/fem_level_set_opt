@@ -1,0 +1,10 @@
+/home/data/cache_dir/pyop2/6b/66751fe6d0d75d020dc123b906657e_p58.c: In function ‘wrap_form1_cell_integral_otherwise’:
+/home/data/cache_dir/pyop2/6b/66751fe6d0d75d020dc123b906657e_p58.c:41:21: warning: unused variable ‘i13’ [-Wunused-variable]
+   41 |       int32_t const i13 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/6b/66751fe6d0d75d020dc123b906657e_p58.c:48:21: warning: unused variable ‘i10’ [-Wunused-variable]
+   48 |       int32_t const i10 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/6b/66751fe6d0d75d020dc123b906657e_p58.c:57:21: warning: unused variable ‘i9’ [-Wunused-variable]
+   57 |       int32_t const i9 = 0;
+      |                     ^~

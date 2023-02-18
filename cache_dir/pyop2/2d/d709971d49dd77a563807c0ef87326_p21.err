@@ -1,0 +1,13 @@
+/home/data/cache_dir/pyop2/2d/d709971d49dd77a563807c0ef87326_p21.c: In function ‘wrap_expression_kernel’:
+/home/data/cache_dir/pyop2/2d/d709971d49dd77a563807c0ef87326_p21.c:26:23: warning: unused variable ‘i9’ [-Wunused-variable]
+   26 |         int32_t const i9 = 0;
+      |                       ^~
+/home/data/cache_dir/pyop2/2d/d709971d49dd77a563807c0ef87326_p21.c:22:21: warning: unused variable ‘i7’ [-Wunused-variable]
+   22 |       int32_t const i7 = 0;
+      |                     ^~
+/home/data/cache_dir/pyop2/2d/d709971d49dd77a563807c0ef87326_p21.c:36:23: warning: unused variable ‘i6’ [-Wunused-variable]
+   36 |         int32_t const i6 = 0;
+      |                       ^~
+/home/data/cache_dir/pyop2/2d/d709971d49dd77a563807c0ef87326_p21.c:33:21: warning: unused variable ‘i5’ [-Wunused-variable]
+   33 |       int32_t const i5 = 0;
+      |                     ^~

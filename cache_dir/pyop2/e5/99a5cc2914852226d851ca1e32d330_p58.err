@@ -1,0 +1,28 @@
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c: In function ‘wrap_form0_cell_integral_otherwise’:
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:75:25: warning: unused variable ‘i25’ [-Wunused-variable]
+   75 |           int32_t const i25 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:72:23: warning: unused variable ‘i24’ [-Wunused-variable]
+   72 |         int32_t const i24 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:84:25: warning: unused variable ‘i23’ [-Wunused-variable]
+   84 |           int32_t const i23 = 0;
+      |                         ^~~
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:81:23: warning: unused variable ‘i21’ [-Wunused-variable]
+   81 |         int32_t const i21 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:91:21: warning: unused variable ‘i18’ [-Wunused-variable]
+   91 |       int32_t const i18 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:102:23: warning: unused variable ‘i17’ [-Wunused-variable]
+  102 |         int32_t const i17 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:98:21: warning: unused variable ‘i15’ [-Wunused-variable]
+   98 |       int32_t const i15 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:112:23: warning: unused variable ‘i14’ [-Wunused-variable]
+  112 |         int32_t const i14 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/e5/99a5cc2914852226d851ca1e32d330_p58.c:109:21: warning: unused variable ‘i13’ [-Wunused-variable]
+  109 |       int32_t const i13 = 0;
+      |                     ^~~

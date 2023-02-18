@@ -1,0 +1,19 @@
+/home/data/cache_dir/pyop2/4c/f45221fc0effc230792dcd8ac2a934_p59.c: In function ‘wrap_expression_kernel’:
+/home/data/cache_dir/pyop2/4c/f45221fc0effc230792dcd8ac2a934_p59.c:33:23: warning: unused variable ‘i11’ [-Wunused-variable]
+   33 |         int32_t const i11 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/4c/f45221fc0effc230792dcd8ac2a934_p59.c:29:21: warning: unused variable ‘i9’ [-Wunused-variable]
+   29 |       int32_t const i9 = 0;
+      |                     ^~
+/home/data/cache_dir/pyop2/4c/f45221fc0effc230792dcd8ac2a934_p59.c:43:23: warning: unused variable ‘i14’ [-Wunused-variable]
+   43 |         int32_t const i14 = 0;
+      |                       ^~~
+/home/data/cache_dir/pyop2/4c/f45221fc0effc230792dcd8ac2a934_p59.c:39:21: warning: unused variable ‘i12’ [-Wunused-variable]
+   39 |       int32_t const i12 = 0;
+      |                     ^~~
+/home/data/cache_dir/pyop2/4c/f45221fc0effc230792dcd8ac2a934_p59.c:53:23: warning: unused variable ‘i8’ [-Wunused-variable]
+   53 |         int32_t const i8 = 0;
+      |                       ^~
+/home/data/cache_dir/pyop2/4c/f45221fc0effc230792dcd8ac2a934_p59.c:50:21: warning: unused variable ‘i7’ [-Wunused-variable]
+   50 |       int32_t const i7 = 0;
+      |                     ^~
