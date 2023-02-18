@@ -1,4 +1,4 @@
-source /home/firedrake/firedrake/activate
+source ~/firedrake/firedrake/activate
 
 export FIREDRAKE_CACHE_DIR=~/data/cache_dir/firedrake
 export PYOP2_CACHE_DIR=~/data/cache_dir/pyop2
