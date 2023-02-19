@@ -55,7 +55,7 @@ model["PML"] = {
     "ly": 0.0,
 }
 recvs = spyro.create_transect((-0.01, 0.250), (-0.01, 2.75), 300)
-sources = spyro.create_transect((-0.01, 0.250), (-0.01, 2.750), 2)
+sources = spyro.create_transect((-0.01, 0.250), (-0.01, 2.750), 3)
 model["acquisition"] = {
     "source_type": "Ricker",
     "num_sources": len(sources),
