@@ -77,19 +77,6 @@ model["timeaxis"] = {
 
 VP_1 = 4.5  # inside subdomain to be optimized
 
-# def mkDirectory(name):
-#     """ 
-#     Make a directory to save the experiments files
-#     """
-#     try:
-#         shutil.rmtree(name, ignore_errors=True, onerror=None)
-#         os.makedirs(name)
-#     except OSError as e:
-#         if e.errno != errno.EEXIST:
-#             raise
-#     print("{} : directory was created" .format(name))
-
-
 def calculate_indicator_from_vp(vp, mesh):
     """Create an indicator function"""
 
@@ -128,7 +115,6 @@ def create_weighting_function(V, const=100.0, M=5, width=0.1, show=False):
     """Create a weighting function g, which is large near the
 
     boundary of the domain and a constant smaller value in the interior
-
 
 
     Inputs
