@@ -20,9 +20,9 @@ model["mesh"] = {
     "Lz": 0.65,  # depth in km - always positive
     "Lx": 1.0,  # width in km - always positive
     "Ly": 0.0,  # thickness in km - always positive
-    "meshfile": "meshes/immersed_disk_true_vp.msh",
-    "initmodel": "velocity_models/immersed_disk_guess_vp.hdf5",
-    "truemodel": "velocity_models/immersed_disk_true_vp.hdf5",
+    "meshfile": "../../meshes/immersed_disk_true_vp.msh",
+    "initmodel": "../../velocity_models/immersed_disk_guess_vp.hdf5",
+    "truemodel": "../../velocity_models/immersed_disk_true_vp.hdf5",
 }
 model["PML"] = {
     "status": True,  # true,  # true or false
@@ -62,7 +62,7 @@ mesh, V = spyro.io.read_mesh(model, comm)
 
 vp_exact = spyro.io.interpolate(model, mesh, V, guess=False)
 
-File("exact_vp.pvd").write(vp_exact, name="true_velocity")
+File("../../results/exact_vp.pvd").write(vp_exact, name="true_velocity")
 
 sources = spyro.Sources(model, mesh, V, comm).create()
 
@@ -82,7 +82,7 @@ for sn in range(model["acquisition"]["num_sources"]):
             output=True,
         )
         print(time.time() - t1)
-        spyro.io.save_shots("shots/forward_exact_level_set" + str(sn) + ".dat", p_recv)
+        spyro.io.save_shots("../../shots/forward_exact_level_set" + str(sn) + ".dat", p_recv)
         spyro.plots.plot_shotrecords(
             model,
             p_recv,

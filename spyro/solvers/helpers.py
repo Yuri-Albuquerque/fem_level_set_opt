@@ -28,7 +28,7 @@ def create_output_file(name, comm, source_num):
     if io.is_owner(comm, source_num):
         outfile = File(
             os.getcwd()
-            + "/results/shots/shots_"
+            + "../../results/shots/shots_"
             + str(source_num)
             + "_ensemble_"
             + str(comm.ensemble_comm.rank)

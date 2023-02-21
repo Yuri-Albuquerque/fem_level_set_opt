@@ -46,7 +46,7 @@ def advect(mesh, q, u, number_of_timesteps=10, output=False):
     t = 0.0
 
     if output:
-        indicator = File("./results/indicator/indicator.pvd")
+        indicator = File("../../results/indicator/indicator.pvd")
 
     step = 0
     while t < T - 0.5 * dt:

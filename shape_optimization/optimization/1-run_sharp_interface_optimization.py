@@ -18,9 +18,9 @@ model["mesh"] = {
     "Lz": 0.65,  # depth in km - always positive
     "Lx": 1.00,  # width in km - always positive
     "Ly": 0.0,  # thickness in km - always positive
-    "meshfile": "meshes/immersed_disk_guess_vp.msh",
-    "initmodel": "velocity_models/immersed_disk_guess_vp.hdf5",
-    "truemodel": "velocity_models/immersed_disk_true_vp.hdf5",
+    "meshfile": "../../meshes/immersed_disk_guess_vp.msh",
+    "initmodel": "../../velocity_models/immersed_disk_guess_vp.hdf5",
+    "truemodel": "../../velocity_models/immersed_disk_true_vp.hdf5",
 }
 model["PML"] = {
     "status": True,  # true,  # true or false
@@ -152,7 +152,7 @@ def calculate_functional(model, mesh, comm, vp, sources, receivers, iter_num):
             guess, guess_dt, guess_recv = spyro.solvers.Leapfrog_level_set(
                 model, mesh, comm, vp, sources, receivers, source_num=sn
             )
-            f = "shots/forward_exact_level_set" + str(sn) + ".dat"
+            f = "../../shots/forward_exact_level_set" + str(sn) + ".dat"
             p_exact_recv = spyro.io.load_shots(f)
             # DEBUG
             # viz the signal at receiver # 100
@@ -164,7 +164,7 @@ def calculate_functional(model, mesh, comm, vp, sources, receivers, iter_num):
                 plt.ylim(-5e-5, 5e-5)
                 plt.title("Receiver #100")
                 plt.savefig(
-                    "comparison_"
+                    "../../results/comparison_"
                     + str(comm.ensemble_comm.rank)
                     + "_iter_"
                     + str(iter_num)
@@ -247,7 +247,7 @@ def optimization(model, mesh, V, comm, vp, sources, receivers, max_iter=10):
 
     # the file that contains the shape gradient each iteration
     if comm.ensemble_comm.rank == 0:
-        grad_file = File("theta.pvd", comm=comm.comm)
+        grad_file = File("../../results/theta.pvd", comm=comm.comm)
 
     weighting = create_weighting_function(V, width=0.1, M=10, const=1e-9)
 
@@ -348,7 +348,7 @@ vp = spyro.io.interpolate(model, mesh, V, guess=True)
 
 # visualize the updates with this file
 if comm.ensemble_comm.rank == 0:
-    evolution_of_velocity = File("evolution_of_velocity.pvd", comm=comm.comm)
+    evolution_of_velocity = File("../../results/evolution_of_velocity.pvd", comm=comm.comm)
     evolution_of_velocity.write(vp, name="velocity")
 
 # Configure the sources and receivers
