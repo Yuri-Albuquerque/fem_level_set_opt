@@ -383,3 +383,10 @@ def oneDiskOptimization():
                       sources, receivers, max_iter=50)
 
     return None
+
+if __name__ == '__main__':
+    print("Initializing sharp identificantion process")
+    oneDiskOptimization()
+
+
+
