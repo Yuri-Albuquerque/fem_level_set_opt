@@ -15,8 +15,17 @@ sudo singularity build FS.sif /fem_level_set_opt/shape_optimization/recipe.def
 ### Runnig experiments
 ======================
 
-From the parent directory run the command: 
+From the parent directory one could run an interactive singularity shell: 
 
 ```shell
-singularity run --containall -B /fem_level_set_opt:/data FS.sif <path_to_experiment>.py
+singularity shell --containall -B ./fem_level_set_opt:/home/<your_username>/data FS.sif
+```
+Then a shell with `Singularity>` prompt name will appear. Accsses data folder and run the shell script `run.sh` to activate firedrake environment, with
+```shell
+cd data
+source run.sh
+```
+Finally you could run the experiment with
+```shell
+mpiexec -n <number_of_shots> python3 /shape_optimization/<forward_or_optimization>/?-<experiment>.py
 ```

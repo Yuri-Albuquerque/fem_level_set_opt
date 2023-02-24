@@ -1,8 +1,27 @@
 import time
 
 from firedrake import *
+import pdb
+import sys
+import os
+ 
+# getting the name of the directory
+# where the this file is present.
+current = os.path.dirname(os.path.realpath(__file__))
+ 
+# Getting the parent directory name
+# where the current directory is present.
+shape_optimization = os.path.dirname(current)
+data = os.path.dirname(shape_optimization)
+ 
+# adding the parent directory to
+# the sys.path.
+sys.path.append(data)
 
+# now we can import the module in the parent
+# directory. 
 import spyro
+
 
 model = {}
 model["parallelism"] = {
@@ -20,9 +39,9 @@ model["mesh"] = {
     "Lz": 0.65,  # depth in km - always positive
     "Lx": 1.0,  # width in km - always positive
     "Ly": 0.0,  # thickness in km - always positive
-    "meshfile": "../../meshes/immersed_disk_true_vp.msh",
-    "initmodel": "../../velocity_models/immersed_disk_guess_vp.hdf5",
-    "truemodel": "../../velocity_models/immersed_disk_true_vp.hdf5",
+    "meshfile": "./meshes/immersed_disk_true_vp.msh",
+    "initmodel": "./velocity_models/immersed_disk_guess_vp.hdf5",
+    "truemodel": "./velocity_models/immersed_disk_true_vp.hdf5",
 }
 model["PML"] = {
     "status": True,  # true,  # true or false
@@ -36,7 +55,8 @@ model["PML"] = {
     "ly": 0.0,  # thickness of the pml in the y-direction (km) - always positive
 }
 recvs = spyro.create_transect((-0.01, 0.01), (-0.01, 0.99), 100)
-sources = spyro.create_transect((-0.01, 0.01), (-0.01, 0.99), 4)
+sources = spyro.create_transect((-0.01, 0.01), (-0.01, 0.99), 1)
+
 model["acquisition"] = {
     "source_type": "Ricker",
     "num_sources": len(sources),
