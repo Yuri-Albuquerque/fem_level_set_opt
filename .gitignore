@@ -353,3 +353,7 @@ MigrationBackup/
 
 # Locally builded singularity container
 *.sif
+
+# experiments data
+*.PDF
+*.dat

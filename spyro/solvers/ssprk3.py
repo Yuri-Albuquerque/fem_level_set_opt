@@ -131,9 +131,9 @@ def SSPRK3(model, mesh, comm, c, excitations, receivers, source_num=0):
 
         f.assign(expr)
         # Setting up equations
-        LHS = (1 / c ** 2) * (dp_trial) * q * dx(rule=qr_k) + inner(
+        LHS = (1 / c ** 2) * (dp_trial) * q * dx(scheme=qr_k) + inner(
             du_trial, q_vec
-        ) * dx(rule=qr_k)
+        ) * dx(scheme=qr_k)
 
         RHS = inner(u, grad(q)) * dx + f * q * dx + p * div(q_vec) * dx
 
