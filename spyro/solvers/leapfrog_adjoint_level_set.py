@@ -194,11 +194,11 @@ def Leapfrog_adjoint_level_set(
         # File("gradc.pvd").write(gradc)
 
     # -------------------------------------------------------
-    m1 = ((u - 2.0 * u_n + u_nm1) / Constant(dt ** 2)) * v * dx(rule=qr_x)
-    a = c * c * dot(grad(u_n), grad(v)) * dx(rule=qr_x)
+    m1 = ((u - 2.0 * u_n + u_nm1) / Constant(dt ** 2)) * v * dx(scheme=qr_x)
+    a = c * c * dot(grad(u_n), grad(v)) * dx(scheme=qr_x)
 
     if model["PML"]["outer_bc"] == "non-reflective":
-        nf = c * ((u_n - u_nm1) / dt) * v * ds(rule=qr_s)
+        nf = c * ((u_n - u_nm1) / dt) * v * ds(scheme=qr_s)
     else:
         nf = 0
 
@@ -209,39 +209,39 @@ def Leapfrog_adjoint_level_set(
         B = Function(W)
 
         if dim == 2:
-            pml1 = (sigma_x + sigma_z) * ((u - u_n) / dt) * v * dx(rule=qr_x)
-            pml2 = sigma_x * sigma_z * u_n * v * dx(rule=qr_x)
-            pml3 = c * c * inner(grad(v), dot(Gamma_2, pp_n)) * dx(rule=qr_x)
+            pml1 = (sigma_x + sigma_z) * ((u - u_n) / dt) * v * dx(scheme=qr_x)
+            pml2 = sigma_x * sigma_z * u_n * v * dx(scheme=qr_x)
+            pml3 = c * c * inner(grad(v), dot(Gamma_2, pp_n)) * dx(scheme=qr_x)
 
             FF += pml1 + pml2 + pml3
             # -------------------------------------------------------
-            mm1 = (dot((pp - pp_n), qq) / dt) * dx(rule=qr_x)
-            mm2 = inner(dot(Gamma_1, pp_n), qq) * dx(rule=qr_x)
-            dd = inner(qq, grad(u_n)) * dx(rule=qr_x)
+            mm1 = (dot((pp - pp_n), qq) / dt) * dx(scheme=qr_x)
+            mm2 = inner(dot(Gamma_1, pp_n), qq) * dx(scheme=qr_x)
+            dd = inner(qq, grad(u_n)) * dx(scheme=qr_x)
 
             FF += mm1 + mm2 + dd
         elif dim == 3:
-            pml1 = (sigma_x + sigma_y + sigma_z) * ((u - u_n) / dt) * v * dx(rule=qr_x)
-            uuu1 = (-v * psi_n) * dx(rule=qr_x)
+            pml1 = (sigma_x + sigma_y + sigma_z) * ((u - u_n) / dt) * v * dx(scheme=qr_x)
+            uuu1 = (-v * psi_n) * dx(scheme=qr_x)
             pml2 = (
                 (sigma_x * sigma_y + sigma_x * sigma_z + sigma_y * sigma_z)
                 * u_n
                 * v
-                * dx(rule=qr_x)
+                * dx(scheme=qr_x)
             )
-            dd1 = c * c * inner(grad(v), dot(Gamma_2, pp_n)) * dx(rule=qr_x)
+            dd1 = c * c * inner(grad(v), dot(Gamma_2, pp_n)) * dx(scheme=qr_x)
 
             FF += pml1 + pml2 + dd1 + uuu1
             # -------------------------------------------------------
-            mm1 = (dot((pp - pp_n), qq) / dt) * dx(rule=qr_x)
-            mm2 = inner(dot(Gamma_1, pp_n), qq) * dx(rule=qr_x)
-            pml4 = inner(qq, grad(u_n)) * dx(rule=qr_x)
+            mm1 = (dot((pp - pp_n), qq) / dt) * dx(scheme=qr_x)
+            mm2 = inner(dot(Gamma_1, pp_n), qq) * dx(scheme=qr_x)
+            pml4 = inner(qq, grad(u_n)) * dx(scheme=qr_x)
 
             FF += mm1 + mm2 + pml4
             # -------------------------------------------------------
-            pml3 = (sigma_x * sigma_y * sigma_z) * phi * u_n * dx(rule=qr_x)
-            mmm1 = (dot((psi - psi_n), phi) / dt) * dx(rule=qr_x)
-            mmm2 = -c * c * inner(grad(phi), dot(Gamma_3, pp_n)) * dx(rule=qr_x)
+            pml3 = (sigma_x * sigma_y * sigma_z) * phi * u_n * dx(scheme=qr_x)
+            mmm1 = (dot((psi - psi_n), phi) / dt) * dx(scheme=qr_x)
+            mmm2 = -c * c * inner(grad(phi), dot(Gamma_3, pp_n)) * dx(scheme=qr_x)
 
             FF += mmm1 + mmm2 + pml3
     else:
@@ -295,22 +295,22 @@ def Leapfrog_adjoint_level_set(
     G_11 = (
         (dot(grad(uuadj), grad(uufor)) - 2 * grad(uufor)[0] * grad(uuadj)[0])
         * v
-        * dx(rule=qr_x)
+        * dx(scheme=qr_x)
     )
     G_12 = (
         ((-1 * grad(uufor)[0] * grad(uuadj)[1] - 1 * grad(uufor)[1] * grad(uuadj)[0]))
         * v
-        * dx(rule=qr_x)
+        * dx(scheme=qr_x)
     )
     G_22 = (
         (dot(grad(uuadj), grad(uufor)) - 2 * grad(uufor)[1] * grad(uuadj)[1])
         * v
-        * dx(rule=qr_x)
+        * dx(scheme=qr_x)
     )
 
     if piecewise_smooth:
-        G_01 = 2.0 * c * dot(grad(uuadj), grad(uufor)) * gradc[0] * v * dx(rule=qr_x)
-        G_02 = 2.0 * c * dot(grad(uuadj), grad(uufor)) * gradc[1] * v * dx(rule=qr_x)
+        G_01 = 2.0 * c * dot(grad(uuadj), grad(uufor)) * gradc[0] * v * dx(scheme=qr_x)
+        G_02 = 2.0 * c * dot(grad(uuadj), grad(uufor)) * gradc[1] * v * dx(scheme=qr_x)
 
     ke_fe0_list = []
     gradi_11_list = []
@@ -375,7 +375,7 @@ def Leapfrog_adjoint_level_set(
 
             # scalar product
             ke_fe0_list.append(
-                assemble(dot(uufor_dt, uuadj_dt) * v * dx(rule=qr_x)).sub(0)
+                assemble(dot(uufor_dt, uuadj_dt) * v * dx(scheme=qr_x)).sub(0)
             )
 
             # produce all the incremental gradients for
@@ -438,10 +438,10 @@ def Leapfrog_adjoint_level_set(
     # sigma_inside
 
     a = weighting * alpha1 * inner(grad(theta), grad(csi)) * dx(
-        rule=qr_x
-    ) + alpha2 * weighting * inner(theta, csi) * dx(rule=qr_x)
+        scheme=qr_x
+    ) + alpha2 * weighting * inner(theta, csi) * dx(scheme=qr_x)
 
-    rhs_grad = +1.0 * k0_fe0 * div(csi) * dx(rule=qr_x)
+    rhs_grad = +1.0 * k0_fe0 * div(csi) * dx(scheme=qr_x)
 
     rhs_grad += (
         -(c ** 2)
@@ -450,7 +450,7 @@ def Leapfrog_adjoint_level_set(
             + gradi_12 * (grad(csi)[0, 1] + grad(csi)[1, 0])
             + 1.0 * gradi_11 * grad(csi)[0, 0]
         )
-        * dx(rule=qr_x)
+        * dx(scheme=qr_x)
     )
 
     L = a - rhs_grad

@@ -61,13 +61,11 @@ mesh, V = spyro.io.read_mesh(model, comm)
 
 vp_exact = spyro.io.interpolate(model, mesh, V, guess=False)
 
-File("/results/exact_solution/exact_vp.pvd").write(vp_exact, name="true_velocity")
+File("./results/exact_solution/exact_vp.pvd").write(vp_exact, name="true_velocity")
 
 sources = spyro.Sources(model, mesh, V, comm).create()
 receivers = spyro.Receivers(model, mesh, V, comm).create()
 
-# XMIN = 0.01
-# XMAX = 27.43
 for sn in range(model["acquisition"]["num_sources"]):
     if spyro.io.is_owner(comm, sn):
         t1 = time.time()
