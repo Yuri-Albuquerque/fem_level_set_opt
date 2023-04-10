@@ -1,5 +1,7 @@
 from firedrake import *
-import firedrake
+from firedrake import FunctionSpace, VectorFunctionSpace, SpatialCoordinate
+from firedrake import Constant, Function, TrialFunctions, TestFunctions, TrialFunction, TestFunction
+from firedrake import dot, grad, inner
 from firedrake.assemble import create_assembly_callable
 from firedrake.assemble import FormAssembler
 

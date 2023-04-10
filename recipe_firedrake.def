@@ -1,0 +1,17 @@
+BootStrap: docker
+From: firedrakeproject/firedrake
+%post
+    . /.singularity.d/env/10-docker*.sh
+    . /home/firedrake/firedrake/bin/activate
+    pip install twine
+    pip install -U SeismicMesh[io]
+    pip install segyio
+    pip install --no-cache-dir roltrilinos
+    pip install --no-cache-dir ROL
+
+%runscript
+    exec "$@"
+
+%environment
+    export PATH=${PATH}:/usr/local/python/bin:/usr/local/python/lib:${LD_LIBRARY_PATH}
+    export PKG_CONFIG_PATH=/usr/local/python/lib/pkgconfig:${PKG_CONFIG_PATH}

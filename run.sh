@@ -1,6 +1,7 @@
-source ../../../firedrake_build/firedrake/bin/activate
+#!/bin/sh
 
-export FIREDRAKE_CACHE_DIR=~/data/cache_dir/firedrake
-export PYOP2_CACHE_DIR=~/data/cache_dir/pyop2
-export FIREDRAKE_TSFC_KERNEL_CACHE_DIR=~/data/cache_dir/tfsc
+export PYTHONPATH=${PYTHONPATH}:/home/yuri/project:/home/yuri/project/fem_level_set_opt
+export FIREDRAKE_CACHE_DIR=/home/yuri/project/fem_level_set_opt/cache_dir/firedrake
+export PYOP2_CACHE_DIR=/home/yuri/project/fem_level_set_opt/cache_dir/pyop2
+export FIREDRAKE_TSFC_KERNEL_CACHE_DIR=/home/yuri/project/fem_level_set_opt/cache_dir/tfsc
 export OMP_NUM_THREADS=1 
