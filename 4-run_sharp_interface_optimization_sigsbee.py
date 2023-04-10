@@ -50,7 +50,7 @@ model["acquisition"] = {
     "delay": 1.0,
     "amplitude": 1.0,
     "num_receivers": 348,
-    "receiver_locations": spyro.create_transect((-0.01, 4.0), (-0.01, 27.0), 348),
+    "receiver_locations": spyro.create_transect((-0.01, 4.0), (-0.01, 27.0), 400),
 }
 model["timeaxis"] = {
     "t0": 0.0,  #  initial time for event
@@ -141,10 +141,10 @@ def create_weighting_function(V, const=100.0, M=5, width=0.1, show=False):
         plt.scatter(Z, X, 5, c=w)
         plt.colorbar()
         plt.clim([1.0e-10, 1.0e-8])
-        plt.savefig("weighting_function.png")
+        plt.savefig("./results/weighting_function/weighting_function.png")
 
     wei = Function(V, w, name="weighting_function")
-    File("weighting_function.pvd").write(wei)
+    File("./results/weighting_function/weighting_function.pvd").write(wei)
     return wei
 
 
@@ -171,7 +171,7 @@ def calculate_functional(model, mesh, comm, vp, sources, receivers, iter_num):
                 plt.ylim(-5e-6, 5e-6)
                 plt.title("Receiver #100")
                 plt.savefig(
-                    "comparison_"
+                    "./results/comparison_"
                     + str(comm.ensemble_comm.rank)
                     + "_iter_"
                     + str(iter_num)
@@ -192,7 +192,7 @@ def calculate_functional(model, mesh, comm, vp, sources, receivers, iter_num):
         J_total[0] /= comm.ensemble_comm.size
     if comm.ensemble_comm.rank == 0:
         print(f"The cost functional is: {J_total[0]}")
-        with open("cost_history.txt", "a+") as ch:
+        with open("./results/cost_history.txt", "a+") as ch:
             ch.write(f"{J_total[0]:.50f}\n")
 
     return (
@@ -268,7 +268,7 @@ def optimization(
 
     # the file that contains the shape gradient each iteration
     if comm.ensemble_comm.rank == 0:
-        grad_file = File("theta.pvd", comm=comm.comm)
+        grad_file = File("./results/theta/theta.pvd", comm=comm.comm)
 
     weighting = create_weighting_function(
         V, width=(0.1,0.1,0.1,0.1), M=10, const=1e-10)
@@ -401,7 +401,7 @@ vp_background = spyro.io.interpolate(model, mesh, V, background=True)
 
 # visualize the updates with this file
 if comm.ensemble_comm.rank == 0:
-    evolution_of_velocity = File("evolution_of_velocity.pvd", comm=comm.comm)
+    evolution_of_velocity = File("./results/evolution/evolution_of_velocity.pvd", comm=comm.comm)
     evolution_of_velocity.write(vp, name="velocity")
 
     File("vp_background.pvd").write(vp_background)
