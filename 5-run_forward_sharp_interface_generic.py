@@ -75,7 +75,7 @@ mesh, V = spyro.io.read_mesh(model, comm)
 
 vp_exact = spyro.io.interpolate(model, mesh, V, guess=False)
 
-File("exact_vp.pvd").write(vp_exact, name="true_velocity")
+File("./results/exact/exact_vp.pvd").write(vp_exact, name="true_velocity")
 
 sources = spyro.Sources(model, mesh, V, comm).create()
 

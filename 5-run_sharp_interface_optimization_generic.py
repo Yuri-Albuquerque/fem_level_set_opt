@@ -205,11 +205,11 @@ def create_weighting_function(V, const=100.0, M=5, width=0.1, show=False):
 
         plt.clim([1e-10, 1e-8])
 
-        plt.savefig("weighting_function.png")
+        plt.savefig("./results/weighting_function/weighting_function.png")
 
     wei = Function(V, w, name="weighting_function")
 
-    File("weighting_function.pvd").write(wei)
+    File("./results/weighting_function/weighting_function.pvd").write(wei)
 
     # quit()
 
@@ -261,7 +261,7 @@ def calculate_functional(model, mesh, comm, vp, sources, receivers, iter_num):
 
                 plt.savefig(
 
-                    "comparison_"
+                    "./results/comparison/comparison_"
 
                     + str(comm.ensemble_comm.rank)
 
@@ -301,7 +301,7 @@ def calculate_functional(model, mesh, comm, vp, sources, receivers, iter_num):
 
         print(f"The cost functional is: {J_total[0]}")
 
-        with open("cost_history.txt", "a+") as ch:
+        with open("./results/cost_history.txt", "a+") as ch:
 
             ch.write(f"{J_total[0]:.50f}\n")
 
@@ -420,7 +420,7 @@ def optimization(
 
     # the file that contains the shape gradient each iteration
     if comm.ensemble_comm.rank == 0:
-        grad_file = File("theta.pvd", comm=comm.comm)
+        grad_file = File("./results/theta/theta.pvd", comm=comm.comm)
 
     weighting = create_weighting_function(
         V, width=(0.1, 0.1, 0.1, 0.1), M=10, const=1e-10, show=False)
@@ -653,7 +653,7 @@ vp_background = spyro.io.interpolate(model, mesh, V, background=True)
 
 if comm.ensemble_comm.rank == 0:
 
-    evolution_of_velocity = File("evolution_of_velocity.pvd", comm=comm.comm)
+    evolution_of_velocity = File("./results/evolution/evolution_of_velocity.pvd", comm=comm.comm)
 
     evolution_of_velocity.write(vp, name="velocity")
 

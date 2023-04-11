@@ -70,7 +70,7 @@ def plot_shotrecords(
     plt.xlim(start_index, end_index)
     plt.ylim(tf, 0)
     plt.subplots_adjust(left=0.18, right=0.95, bottom=0.14, top=0.95)
-    plt.savefig("shot_number_" + name + "." + ft, format=ft)
+    plt.savefig("./results/shot_number_" + name + "." + ft, format=ft)
     # plt.axis("image")
     if appear:
         plt.show()
@@ -133,7 +133,7 @@ def plot_shotrecords_difference(model, arr1, arr2, appear=False, name="DIFF", ft
     plt.xlim(start_x, end_x)
     plt.ylim(tf, 0)
     plt.subplots_adjust(left=0.18, right=0.95, bottom=0.14, top=0.95)
-    plt.savefig("shot_number_difference." + ft, format=ft)
+    plt.savefig("./results/shot_number_difference." + ft, format=ft)
     if appear:
         plt.show()
     plt.close()
@@ -183,7 +183,7 @@ def plot_pml_error(model, error, appear=False):
     ax.yaxis.get_offset_text().set_fontsize(18)
     plt.subplots_adjust(left=0.18, right=0.95, bottom=0.14, top=0.95)
     plt.legend(loc="best")
-    plt.savefig("pml_error.pdf", format="PDF")
+    plt.savefig("./results/pml_error.pdf", format="PDF")
     if appear:
         plt.show()
     plt.close()
