@@ -261,7 +261,7 @@ def calculate_functional(model, mesh, comm, vp, sources, receivers, iter_num):
 
                 plt.savefig(
 
-                    "./results/comparison/comparison_"
+                    "./results/comparison_"
 
                     + str(comm.ensemble_comm.rank)
 
