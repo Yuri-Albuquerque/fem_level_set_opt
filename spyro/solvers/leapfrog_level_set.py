@@ -2,7 +2,6 @@ from firedrake import *
 from firedrake import FunctionSpace, VectorFunctionSpace, SpatialCoordinate
 from firedrake import Constant, Function, TrialFunctions, TestFunctions, TrialFunction, TestFunction
 from firedrake import dot, grad, inner
-from firedrake.assemble import create_assembly_callable
 from firedrake.assemble import FormAssembler
 
 from .. import utils
@@ -124,9 +123,9 @@ def Leapfrog_level_set(
             u, pp = TrialFunctions(W)
             v, qq = TestFunctions(W)
 
-            u_np1, pp_np1 = Function(W).split()
-            u_n, pp_n = Function(W).split()
-            u_nm1, pp_nm1 = Function(W).split()
+            u_np1, pp_np1 = Function(W).subfunctions
+            u_n, pp_n = Function(W).subfunctions
+            u_nm1, pp_nm1 = Function(W).subfunctions
 
             sigma_x, sigma_z = damping.functions(
                 model, V, dim, x, x1, x2, a_pml, z, z1, z2, c_pml
@@ -137,9 +136,9 @@ def Leapfrog_level_set(
             u, psi, pp = TrialFunctions(W)
             v, phi, qq = TestFunctions(W)
 
-            u_np1, psi_np1, pp_np1 = Function(W).split()
-            u_n, psi_n, pp_n = Function(W).split()
-            u_nm1, psi_nm1, pp_nm1 = Function(W).split()
+            u_np1, psi_np1, pp_np1 = Function(W).subfunctions
+            u_n, psi_n, pp_n = Function(W).subfunctions
+            u_nm1, psi_nm1, pp_nm1 = Function(W).subfunctions
 
             sigma_x, sigma_y, sigma_z = damping.functions(
                 model,
@@ -266,8 +265,7 @@ def Leapfrog_level_set(
         if t % fspool == 0
     ]
 
-    assembly_callable = create_assembly_callable(rhs_, tensor=B)
-    # assembly_callable = FormAssembler(rhs_, tensor=B)
+    assembly_callable = FormAssembler(rhs_, tensor=B)
 
     for IT in range(nt):
 
@@ -282,9 +280,9 @@ def Leapfrog_level_set(
         solver.solve(X, B)
         if PML:
             if dim == 2:
-                u_np1, pp_np1 = X.split()
+                u_np1, pp_np1 = X.subfunctions
             elif dim == 3:
-                u_np1, psi_np1, pp_np1 = X.split()
+                u_np1, psi_np1, pp_np1 = X.subfunctions
 
                 psi_nm1.assign(psi_n)
                 psi_n.assign(psi_np1)

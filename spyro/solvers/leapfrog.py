@@ -1,5 +1,5 @@
 from firedrake import *
-from firedrake.assemble import create_assembly_callable
+from firedrake.assemble import FormAssembler
 
 from .. import utils
 from ..domains import quadrature, space
@@ -119,18 +119,18 @@ def Leapfrog(
             u, pp = TrialFunctions(W)
             v, qq = TestFunctions(W)
 
-            u_np1, pp_np1 = Function(W).split()
-            u_n, pp_n = Function(W).split()
-            u_nm1, pp_nm1 = Function(W).split()
+            u_np1, pp_np1 = Function(W).subfunctions
+            u_n, pp_n = Function(W).subfunctions
+            u_nm1, pp_nm1 = Function(W).subfunctions
 
         elif dim == 3:
             W = V * V * Z
             u, psi, pp = TrialFunctions(W)
             v, phi, qq = TestFunctions(W)
 
-            u_np1, psi_np1, pp_np1 = Function(W).split()
-            u_n, psi_n, pp_n = Function(W).split()
-            u_nm1, psi_nm1, pp_nm1 = Function(W).split()
+            u_np1, psi_np1, pp_np1 = Function(W).subfunctions
+            u_n, psi_n, pp_n = Function(W).subfunctions
+            u_nm1, psi_nm1, pp_nm1 = Function(W).subfunctions
 
         # in 2d
         if dim == 2:
@@ -257,7 +257,7 @@ def Leapfrog(
     usol_recv = []
     saveIT = 0
 
-    assembly_callable = create_assembly_callable(rhs_, tensor=B)
+    assembly_callable = FormAssembler(rhs_, tensor=B)
 
     for IT in range(nt):
 
@@ -273,9 +273,9 @@ def Leapfrog(
         solver.solve(X, B)
         if PML:
             if dim == 2:
-                u_np1, pp_np1 = X.split()
+                u_np1, pp_np1 = X.subfunctions
             elif dim == 3:
-                u_np1, psi_np1, pp_np1 = X.split()
+                u_np1, psi_np1, pp_np1 = X.subfunctions
 
                 psi_nm1.assign(psi_n)
                 psi_n.assign(psi_np1)

@@ -86,11 +86,11 @@ def SSPRK3(model, mesh, comm, c, excitations, receivers, source_num=0):
     initialU = fd.as_vector((0, 0))
     initialP = fd.Function(V.sub(1)).interpolate(0.0 * x * z)
     UP = fd.Function(V)
-    u, p = UP.split()
+    u, p = UP.subfunctions
     u.assign(initialU)
     p.interpolate(initialP)
     UP0 = fd.Function(V)
-    u0, p0 = UP0.split()
+    u0, p0 = UP0.subfunctions
     u0.assign(u)
     p0.assign(p)
 
@@ -98,7 +98,7 @@ def SSPRK3(model, mesh, comm, c, excitations, receivers, source_num=0):
     bcp = fd.DirichletBC(V.sub(1), 0.0, "on_boundary")
 
     dUP = fd.Function(V)
-    du, dp = dUP.split()
+    du, dp = dUP.subfunctions
     K1 = fd.Function(V)
     K2 = fd.Function(V)
     K3 = fd.Function(V)
@@ -175,7 +175,7 @@ def SSPRK3(model, mesh, comm, c, excitations, receivers, source_num=0):
             # solv.solve() #Solve for du and dp
             solv.solve()  # Solve for du and dp
             K1.assign(dUP)
-            k1U, k1P = K1.split()
+            k1U, k1P = K1.subfunctions
 
             # Second step
             u.assign(u0 + dt * k1U)
@@ -184,7 +184,7 @@ def SSPRK3(model, mesh, comm, c, excitations, receivers, source_num=0):
             # solv.solve() #Solve for du and dp
             solv.solve()  # Solve for du and dp
             K2.assign(dUP)
-            k2U, k2P = K2.split()
+            k2U, k2P = K2.subfunctions
 
             # Third step
             u.assign(0.75 * u0 + 0.25 * (u + dt * k2U))
@@ -193,7 +193,7 @@ def SSPRK3(model, mesh, comm, c, excitations, receivers, source_num=0):
             # solve.solve() #Solve for du and dp
             solv.solve()  # Solve for du and dp
             K3.assign(dUP)
-            k3U, k3P = K3.split()
+            k3U, k3P = K3.subfunctions
 
             # Updating answer
             u.assign((1.0 / 3.0) * u0 + (2.0 / 3.0) * (u + dt * k3U))

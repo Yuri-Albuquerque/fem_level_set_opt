@@ -28,9 +28,9 @@ model["mesh"] = {
     "Lz": 1.0,  # depth in km - always positive
     "Lx": 3.0,  # width in km - always positive
     "Ly": 0.0,  # thickness in km - always positive
-    "meshfile": "meshes/shape18_true_vp.msh",
-    "initmodel": "velocity_models/shape18_guess_vp.hdf5",
-    "truemodel": "velocity_models/shape18_true_vp.hdf5",
+    "meshfile": "meshes/immersed_disk_true_vp.msh",
+    "initmodel": "velocity_models/immersed_disk_guess_vp.hdf5",
+    "truemodel": "velocity_models/immersed_disk_true_vp.hdf5",
 }
 
 model["PML"] = {

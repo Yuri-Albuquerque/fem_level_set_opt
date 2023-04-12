@@ -49,7 +49,7 @@ model["acquisition"] = {
     "frequency": 2.0,
     "delay": 1.0,
     "amplitude": 1.0,
-    "num_receivers": 348,
+    "num_receivers": 400,
     "receiver_locations": spyro.create_transect((-0.01, 4.0), (-0.01, 27.0), 400),
 }
 model["timeaxis"] = {
