@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import numpy as np
 from firedrake import *
-from firedrake.assemble import FormAssembler
+from firedrake.assemble import create_assembly_callable
 
 from scipy.sparse import csc_matrix
 
@@ -280,8 +280,7 @@ def Leapfrog_adjoint(model, mesh, comm, c, guess, residual):
             },
         )
 
-    assembly_callable = FormAssembler(rhs_, tensor=B)
-
+    assembly_callable = create_assembly_callable(rhs_, tensor=B)
     rhs_forcing = Function(V)  # forcing term
     for IT in range(nt - 1, -1, -1):
         t = IT * float(dt)

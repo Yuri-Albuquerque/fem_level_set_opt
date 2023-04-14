@@ -1,5 +1,5 @@
 from firedrake import *
-from firedrake.assemble import FormAssembler
+from firedrake.assemble import create_assembly_callable
 
 from .. import utils
 from ..domains import quadrature, space
@@ -257,8 +257,8 @@ def Leapfrog(
     usol_recv = []
     saveIT = 0
 
-    assembly_callable = FormAssembler(rhs_, tensor=B)
-
+    
+    assembly_callable = create_assembly_callable(rhs_, tensor=B)
     for IT in range(nt):
 
         if IT < dstep:
@@ -267,7 +267,7 @@ def Leapfrog(
             ricker.assign(0.0)
 
         # AX=B --> solve for X = B/Aˆ-1
-        # B = assemble(rhs_, tensor=B)
+        #B = assemble(rhs_, tensor=B)
         assembly_callable()
 
         solver.solve(X, B)

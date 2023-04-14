@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 from firedrake import *
-from firedrake.assemble import FormAssembler
+from firedrake.assemble import create_assembly_callable
 
 import numpy as np
 from scipy.sparse import csc_matrix
@@ -322,7 +322,7 @@ def Leapfrog_adjoint_level_set(
         gradi_01_list = []
         gradi_02_list = []
 
-    assembly_callable = FormAssembler(rhs_, tensor=B)
+    assembly_callable = create_assembly_callable(rhs_, tensor=B)    
     calc_grad = False
     for IT in range(nt - 1, 0, -1):
         t = IT * float(dt)
@@ -331,7 +331,7 @@ def Leapfrog_adjoint_level_set(
         assembly_callable()
         f = _adjoint_update_rhs(rhs_forcing, sparse_excitations, residual, IT, is_local)
         
-        f *= elem_mult(c * c)
+        f *= elem_mult(c , c)
         # f.interpolate(c * c)
         # add forcing term to solve scalar pressure
         B.sub(0).dat.data[:] += f.dat.data[:]

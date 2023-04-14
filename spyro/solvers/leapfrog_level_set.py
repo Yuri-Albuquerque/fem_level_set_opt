@@ -2,7 +2,7 @@ from firedrake import *
 from firedrake import FunctionSpace, VectorFunctionSpace, SpatialCoordinate
 from firedrake import Constant, Function, TrialFunctions, TestFunctions, TrialFunction, TestFunction
 from firedrake import dot, grad, inner
-from firedrake.assemble import FormAssembler
+from firedrake.assemble import create_assembly_callable
 
 from .. import utils
 from ..sources import FullRickerWavelet
@@ -264,9 +264,9 @@ def Leapfrog_level_set(
         for t in range(nt)
         if t % fspool == 0
     ]
+   
 
-    assembly_callable = FormAssembler(rhs_, tensor=B)
-
+    assembly_callable = create_assembly_callable(rhs_, tensor=B)
     for IT in range(nt):
 
         if IT < dstep:
