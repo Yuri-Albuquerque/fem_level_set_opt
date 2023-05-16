@@ -553,14 +553,7 @@ def optimization(
             indicator = indicator_new
             
             vp = vp_new
-            # if remeshed:
-            #     vp = vp_new_msh
-            #     vp_background = vp_background_new_msh
-            # else:
-            #     vp = vp_new
-        
-            # update step
-
+            
             if ls_iter == max_ls:
 
                 beta0 = max(beta0 * gamma2, 0.1 * beta0_init)
