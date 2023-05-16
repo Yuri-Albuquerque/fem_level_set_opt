@@ -5,8 +5,8 @@ import os
 import spyro
 import gc
 import copy
-import SeismicMesh
-import meshio 
+# import SeismicMesh
+# import meshio 
 import segyio
 import matplotlib.pyplot as plt
 gc.disable()
@@ -538,69 +538,69 @@ def optimization(
 
                     flush=True,
                 )
-            remeshed = False
-            ###################################
-            #### begin of re-mesh process  ####
-            ###################################
-            if iter_num > 0 and iter_num % 2 == 0 and remeshed:
-                print(f'iteration number: {iter_num}')
-                _, _, data_new = spyro.io.write_function_to_grid(vp_new, V, 0.01)
-                # plt.imshow(data_new)
-                # plt.colorbar()
-                # plt.show()
-                segyio.tools.from_array('./results/evolution/vp_new_'+str(iter_num)+'.segy', np.fliplr(data_new))
-                bbox = (-1000*model['mesh']['Lz'],0.0,0.0,1000*model['mesh']['Lx'])
-                rectangle = SeismicMesh.Rectangle(bbox)
-                #save hdf5 file
-                SeismicMesh.sizing.write_velocity_model('./results/evolution/vp_new_'+str(iter_num)+'.segy', 
-                                            ofname='./results/evolution/vp_new_'+str(iter_num),
-                                            bbox=bbox,
-                                            domain_pad=1000*model['PML']['lz'],
-                                            pad_style="edge",
-                                            comm=comm.ensemble_comm,
-                                            )
+            # remeshed = False
+            # ###################################
+            # #### begin of re-mesh process  ####
+            # ###################################
+            # if iter_num > 0 and iter_num % 2 == 0 and remeshed:
+            #     print(f'iteration number: {iter_num}')
+            #     _, _, data_new = spyro.io.write_function_to_grid(vp_new, V, 0.01)
+            #     # plt.imshow(data_new)
+            #     # plt.colorbar()
+            #     # plt.show()
+            #     segyio.tools.from_array('./results/evolution/vp_new_'+str(iter_num)+'.segy', np.fliplr(data_new))
+            #     bbox = (-1000*model['mesh']['Lz'],0.0,0.0,1000*model['mesh']['Lx'])
+            #     rectangle = SeismicMesh.Rectangle(bbox)
+            #     #save hdf5 file
+            #     SeismicMesh.sizing.write_velocity_model('./results/evolution/vp_new_'+str(iter_num)+'.segy', 
+            #                                 ofname='./results/evolution/vp_new_'+str(iter_num),
+            #                                 bbox=bbox,
+            #                                 domain_pad=1000*model['PML']['lz'],
+            #                                 pad_style="edge",
+            #                                 comm=comm.ensemble_comm,
+            #                                 )
                 
                 
-                ef_guess = SeismicMesh.sizing.get_sizing_function_from_segy("./results/evolution/vp_new_"+str(iter_num)+".segy", 
-                                                                    bbox,
-                                                                    # cr_max=0.5, # maximum bounded Courant number :math:`Cr_{max}` in the mesh
-                                                                    dt=0.0001,  # for thergiven :math:`\Delta t` of 0.001 seconds
-                                                                    # space_order = 2, # assume quadratic elements :math:`P=2`
-                                                                    wl=20,
-                                                                    freq=2.0,
-                                                                    hmin=15.0,
-                                                                    # hmin = 28.25,
-                                                                    units="m-s",
-                                                                    grade=0.1,
-                                                                    domain_pad=200.0,
-                                                                    pad_style="edge",
-                                                                    comm=comm.ensemble_comm,
-                                                                    )
-                pointsNew, cellsNew = SeismicMesh.generate_mesh(domain=rectangle,
-                                                            edge_length=ef_guess,
-                                                            comm=comm.ensemble_comm,
-                                                            )
-                if comm.ensemble_comm.rank == 0:
-                    meshio.write("./results/evolution/evolution_of_velocity_"+str(iter_num)+".msh",
-                                    meshio.Mesh(pointsNew/1000, 
-                                    [('triangle',cellsNew)]),
-                                    file_format="gmsh22",
-                                    binary=False,
-                                )
-                comm.ensemble_comm.Barrier()
-                model_new["mesh"]["meshfile"] = "./results/evolution/evolution_of_velocity_"+str(iter_num)+".msh" 
-                model_new["mesh"]["initmodel"] = "./results/evolution/vp_new_"+str(iter_num)+".hdf5" 
-                mesh, V = spyro.io.read_mesh(model_new, comm)
-                vp_new = spyro.io.interpolate(model_new, mesh, V, guess=True)
-                vp_background = spyro.io.interpolate(model_new, mesh, V, background=True)
-                sources = spyro.Sources(model_new, mesh, V, comm).create()
-                receivers = spyro.Receivers(model_new, mesh, V, comm).create()
-                model = copy.deepcopy(model_new)
-                weighting = create_weighting_function(
-                                V, width=(0.1, 0.1, 0.1, 1.6), 
-                                M=10, 
-                                const=1e-10,
-                                )
+            #     ef_guess = SeismicMesh.sizing.get_sizing_function_from_segy("./results/evolution/vp_new_"+str(iter_num)+".segy", 
+            #                                                         bbox,
+            #                                                         # cr_max=0.5, # maximum bounded Courant number :math:`Cr_{max}` in the mesh
+            #                                                         dt=0.0001,  # for thergiven :math:`\Delta t` of 0.001 seconds
+            #                                                         # space_order = 2, # assume quadratic elements :math:`P=2`
+            #                                                         wl=20,
+            #                                                         freq=2.0,
+            #                                                         hmin=15.0,
+            #                                                         # hmin = 28.25,
+            #                                                         units="m-s",
+            #                                                         grade=0.1,
+            #                                                         domain_pad=200.0,
+            #                                                         pad_style="edge",
+            #                                                         comm=comm.ensemble_comm,
+            #                                                         )
+            #     pointsNew, cellsNew = SeismicMesh.generate_mesh(domain=rectangle,
+            #                                                 edge_length=ef_guess,
+            #                                                 comm=comm.ensemble_comm,
+            #                                                 )
+            #     if comm.ensemble_comm.rank == 0:
+            #         meshio.write("./results/evolution/evolution_of_velocity_"+str(iter_num)+".msh",
+            #                         meshio.Mesh(pointsNew/1000, 
+            #                         [('triangle',cellsNew)]),
+            #                         file_format="gmsh22",
+            #                         binary=False,
+            #                     )
+            #     comm.ensemble_comm.Barrier()
+            #     model_new["mesh"]["meshfile"] = "./results/evolution/evolution_of_velocity_"+str(iter_num)+".msh" 
+            #     model_new["mesh"]["initmodel"] = "./results/evolution/vp_new_"+str(iter_num)+".hdf5" 
+            #     mesh, V = spyro.io.read_mesh(model_new, comm)
+            #     vp_new = spyro.io.interpolate(model_new, mesh, V, guess=True)
+            #     vp_background = spyro.io.interpolate(model_new, mesh, V, background=True)
+            #     sources = spyro.Sources(model_new, mesh, V, comm).create()
+            #     receivers = spyro.Receivers(model_new, mesh, V, comm).create()
+            #     model = copy.deepcopy(model_new)
+            #     weighting = create_weighting_function(
+            #                     V, width=(0.1, 0.1, 0.1, 1.6), 
+            #                     M=10, 
+            #                     const=1e-10,
+            #                     )
                 # # First, grab the mesh.
                 # m = V.ufl_domain()
 
