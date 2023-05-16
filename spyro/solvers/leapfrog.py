@@ -119,18 +119,18 @@ def Leapfrog(
             u, pp = TrialFunctions(W)
             v, qq = TestFunctions(W)
 
-            u_np1, pp_np1 = Function(W).subfunctions
-            u_n, pp_n = Function(W).subfunctions
-            u_nm1, pp_nm1 = Function(W).subfunctions
+            u_np1, pp_np1 = Function(W).split()
+            u_n, pp_n = Function(W).split()
+            u_nm1, pp_nm1 = Function(W).split()
 
         elif dim == 3:
             W = V * V * Z
             u, psi, pp = TrialFunctions(W)
             v, phi, qq = TestFunctions(W)
 
-            u_np1, psi_np1, pp_np1 = Function(W).subfunctions
-            u_n, psi_n, pp_n = Function(W).subfunctions
-            u_nm1, psi_nm1, pp_nm1 = Function(W).subfunctions
+            u_np1, psi_np1, pp_np1 = Function(W).split()
+            u_n, psi_n, pp_n = Function(W).split()
+            u_nm1, psi_nm1, pp_nm1 = Function(W).split()
 
         # in 2d
         if dim == 2:
@@ -257,8 +257,8 @@ def Leapfrog(
     usol_recv = []
     saveIT = 0
 
-    
     assembly_callable = create_assembly_callable(rhs_, tensor=B)
+
     for IT in range(nt):
 
         if IT < dstep:
@@ -267,15 +267,15 @@ def Leapfrog(
             ricker.assign(0.0)
 
         # AX=B --> solve for X = B/Aˆ-1
-        #B = assemble(rhs_, tensor=B)
+        # B = assemble(rhs_, tensor=B)
         assembly_callable()
 
         solver.solve(X, B)
         if PML:
             if dim == 2:
-                u_np1, pp_np1 = X.subfunctions
+                u_np1, pp_np1 = X.split()
             elif dim == 3:
-                u_np1, psi_np1, pp_np1 = X.subfunctions
+                u_np1, psi_np1, pp_np1 = X.split()
 
                 psi_nm1.assign(psi_n)
                 psi_n.assign(psi_np1)

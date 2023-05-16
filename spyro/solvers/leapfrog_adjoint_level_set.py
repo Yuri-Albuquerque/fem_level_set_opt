@@ -115,19 +115,18 @@ def Leapfrog_adjoint_level_set(
             u, pp = TrialFunctions(W)
             v, qq = TestFunctions(W)
 
-            # u_np1, pp_np1 = Function(W).subfunctions
-            u_np1, pp_np1 = Function(W).subfunctions
-            u_n, pp_n = Function(W).subfunctions
-            u_nm1, pp_nm1 = Function(W).subfunctions
+            u_np1, pp_np1 = Function(W).split()
+            u_n, pp_n = Function(W).split()
+            u_nm1, pp_nm1 = Function(W).split()
 
         elif dim == 3:
             W = V * V * Z
             u, psi, pp = TrialFunctions(W)
             v, phi, qq = TestFunctions(W)
 
-            u_np1, psi_np1, pp_np1 = Function(W).subfunctions
-            u_n, psi_n, pp_n = Function(W).subfunctions
-            u_nm1, psi_nm1, pp_nm1 = Function(W).subfunctions
+            u_np1, psi_np1, pp_np1 = Function(W).split()
+            u_n, psi_n, pp_n = Function(W).split()
+            u_nm1, psi_nm1, pp_nm1 = Function(W).split()
 
         # in 2d
         if dim == 2:
@@ -257,23 +256,23 @@ def Leapfrog_adjoint_level_set(
 
     # Define gradient problem
     if PML:
-        uuadj, _ = Function(W).subfunctions  # auxiliarly function for the gradient compt.
-        uufor, _ = Function(W).subfunctions  # auxiliarly function for the gradient compt.
+        uuadj, _ = Function(W).split()  # auxiliarly function for the gradient compt.
+        uufor, _ = Function(W).split()  # auxiliarly function for the gradient compt.
 
         uuadj_dt, _ = Function(
             W
-        ).subfunctions  # the time deriv. of the adjoint solution at timestep n
+        ).split()  # the time deriv. of the adjoint solution at timestep n
         uufor_dt, _ = Function(
             W
-        ).subfunctions  # the time deriv. of the forward solution at timestep n
+        ).split()  # the time deriv. of the forward solution at timestep n
 
-        gradi_11, _ = Function(W).subfunctions
-        gradi_12, _ = Function(W).subfunctions
-        gradi_22, _ = Function(W).subfunctions
+        gradi_11, _ = Function(W).split()
+        gradi_12, _ = Function(W).split()
+        gradi_22, _ = Function(W).split()
 
-        k0_fe0, _ = Function(W).subfunctions
+        k0_fe0, _ = Function(W).split()
 
-        rhs_forcing, _ = Function(W).subfunctions  # forcing term
+        rhs_forcing, _ = Function(W).split()  # forcing term
     else:
         uuadj = Function(V)
         uufor = Function(V)
@@ -322,7 +321,7 @@ def Leapfrog_adjoint_level_set(
         gradi_01_list = []
         gradi_02_list = []
 
-    assembly_callable = create_assembly_callable(rhs_, tensor=B)    
+    assembly_callable = create_assembly_callable(rhs_, tensor=B)
     calc_grad = False
     for IT in range(nt - 1, 0, -1):
         t = IT * float(dt)
@@ -330,9 +329,7 @@ def Leapfrog_adjoint_level_set(
         # Solver - main equation - (I)
         assembly_callable()
         f = _adjoint_update_rhs(rhs_forcing, sparse_excitations, residual, IT, is_local)
-        
-        f *= elem_mult(c , c)
-        # f.interpolate(c * c)
+        f *= c * c
         # add forcing term to solve scalar pressure
         B.sub(0).dat.data[:] += f.dat.data[:]
 
@@ -340,10 +337,10 @@ def Leapfrog_adjoint_level_set(
         solver.solve(X, B)
         if PML:
             if dim == 2:
-                u_np1, pp_np1 = X.subfunctions
+                u_np1, pp_np1 = X.split()
 
             elif dim == 3:
-                u_np1, psi_np1, pp_np1 = X.subfunctions
+                u_np1, psi_np1, pp_np1 = X.split()
 
                 psi_nm1.assign(psi_n)
                 psi_n.assign(psi_np1)

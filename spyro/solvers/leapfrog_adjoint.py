@@ -126,18 +126,18 @@ def Leapfrog_adjoint(model, mesh, comm, c, guess, residual):
             u, pp = TrialFunctions(W)
             v, qq = TestFunctions(W)
 
-            u_np1, pp_np1 = Function(W).subfunctions
-            u_n, pp_n = Function(W).subfunctions
-            u_nm1, pp_nm1 = Function(W).subfunctions
+            u_np1, pp_np1 = Function(W).split()
+            u_n, pp_n = Function(W).split()
+            u_nm1, pp_nm1 = Function(W).split()
 
         elif dim == 3:
             W = V * V * Z
             u, psi, pp = TrialFunctions(W)
             v, phi, qq = TestFunctions(W)
 
-            u_np1, psi_np1, pp_np1 = Function(W).subfunctions
-            u_n, psi_n, pp_n = Function(W).subfunctions
-            u_nm1, psi_nm1, pp_nm1 = Function(W).subfunctions
+            u_np1, psi_np1, pp_np1 = Function(W).split()
+            u_n, psi_n, pp_n = Function(W).split()
+            u_nm1, psi_nm1, pp_nm1 = Function(W).split()
 
         # in 2d
         if dim == 2:
@@ -281,6 +281,7 @@ def Leapfrog_adjoint(model, mesh, comm, c, guess, residual):
         )
 
     assembly_callable = create_assembly_callable(rhs_, tensor=B)
+
     rhs_forcing = Function(V)  # forcing term
     for IT in range(nt - 1, -1, -1):
         t = IT * float(dt)
@@ -297,9 +298,9 @@ def Leapfrog_adjoint(model, mesh, comm, c, guess, residual):
         solver.solve(X, B)
         if PML:
             if dim == 2:
-                u_np1, pp_np1 = X.subfunctions
+                u_np1, pp_np1 = X.split()
             elif dim == 3:
-                u_np1, psi_np1, pp_np1 = X.subfunctions
+                u_np1, psi_np1, pp_np1 = X.split()
 
                 psi_nm1.assign(psi_n)
                 psi_n.assign(psi_np1)

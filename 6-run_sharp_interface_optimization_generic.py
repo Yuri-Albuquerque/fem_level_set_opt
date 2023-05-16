@@ -538,11 +538,11 @@ def optimization(
 
                     flush=True,
                 )
-            # remeshed = False
+            remeshed = False
             ###################################
             #### begin of re-mesh process  ####
             ###################################
-            if iter_num > 0 and iter_num % 2 == 0:
+            if iter_num > 0 and iter_num % 2 == 0 and remeshed:
                 print(f'iteration number: {iter_num}')
                 _, _, data_new = spyro.io.write_function_to_grid(vp_new, V, 0.01)
                 # plt.imshow(data_new)
